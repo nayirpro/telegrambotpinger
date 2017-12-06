@@ -8,13 +8,13 @@ import subprocess
 import datetime
 import telepot
 import os
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 
-GPIO.setwarnings(False)
+#GPIO.setwarnings(False)
 # to use Raspberry Pi board pin numbers
-GPIO.setmode(GPIO.BOARD)
+#GPIO.setmode(GPIO.BOARD)
 # set up GPIO output channel
-GPIO.setup(40, GPIO.OUT)
+#GPIO.setup(40, GPIO.OUT)
 
 # send terminal command and deliver output to chat telegram
 def run_command(commandt):
@@ -40,9 +40,9 @@ def handle(msg):
         hai_text = '''Hai Nayirpro!'''
         bot.sendMessage(chat_id, hai_text)
     elif command == 'Trace':
-	commandt = 'traceroute 8.8.8.8'.split()
-	for line in run_command(commandt):
-    		bot.sendMessage(chat_id, line)
+        commandt = 'traceroute 8.8.8.8'.split()
+        for line in run_command(commandt):
+            bot.sendMessage(chat_id, line)
     elif command == 'Woi':
         bot.sendMessage(chat_id, "Siap! Laksanakan!")
     elif command == 'Kepre':
@@ -61,6 +61,8 @@ def handle(msg):
             bot.sendMessage(chat_id, text="C Up!")
         else:
             bot.sendMessage(chat_id, text="C Down!")
+    else:
+        pass
             
 bot = telepot.Bot('000000000:AAA_AA-XXXXXXXXXXXXXXXXXXXXXXXXXXXX')
 bot.message_loop(handle)
